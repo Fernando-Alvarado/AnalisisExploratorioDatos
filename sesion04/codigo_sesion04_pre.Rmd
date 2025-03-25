@@ -1,0 +1,216 @@
+---
+title: "Sesión 04"
+author: "Eduardo Martínez"
+date: "2025-03-25"
+output: html_document
+---
+
+```{r}
+library(dplyr)
+library(dlookr)
+library(ggplot2)
+```
+
+```{r}
+datos <- palmerpenguins::penguins
+```
+
+
+```{r}
+datos |> dlookr::diagnose()
+```
+```{r}
+datos |> dlookr::diagnose_numeric()
+```
+
+```{r}
+datos |> dlookr::diagnose_category()
+```
+
+```{r}
+datos |> dlookr::diagnose_outlier()
+```
+
+```{r}
+datos |> dlookr::describe()
+```
+
+```{r}
+datos |> dlookr::plot_na_pareto(col = "blue")
+```
+
+```{r}
+datos |> dlookr::plot_na_hclust(main = "Distribución de los valores faltantes")
+```
+
+```{r}
+datos |> dlookr::normality()
+```
+
+```{r}
+datos |> dlookr::normality() |> dplyr::filter(p_value <= 0.01)
+```
+
+```{r}
+datos |> dlookr::correlate()
+```
+
+```{r}
+datos |> dlookr::correlate() |> plot()
+```
+
+```{r}
+datos |> dlookr::plot_normality()
+```
+
+```{r}
+datos <- NHANES::NHANES
+```
+
+```{r}
+datos |> dlookr::diagnose()
+```
+
+```{r}
+datos |> dlookr::diagnose_numeric()
+```
+
+```{r}
+datos |> dlookr::diagnose_category()
+```
+
+```{r}
+datos |> dlookr::diagnose_outlier()
+```
+
+```{r}
+datos |> dlookr::plot_outlier(Height) 
+```
+
+
+```{r}
+datos |> dlookr::describe()
+```
+  
+
+```{r}
+datos |> dlookr::plot_na_pareto(col = "blue")
+```
+
+```{r}
+datos |> plot_na_hclust(main = "Distribución de los valores faltantes")
+```
+
+
+
+```{r}
+datos |> dlookr::normality()
+```
+
+```{r}
+datos |> dlookr::normality() |> dplyr::filter(p_value <= 0.01)
+```
+
+```{r}
+datos |> dlookr::correlate()
+```
+
+```{r}
+datos |> dlookr::correlate() |> plot()
+```
+
+```{r}
+datos |> dlookr::plot_normality()
+```
+
+```{r}
+datos <- nasaweather::glaciers
+
+datos |> head()
+```
+
+
+```{r}
+datos |> group_by(country) |> summarise(conteo = n())
+```
+RB: Bolivia y/o Botswana
+
+```{r}
+datos |> dlookr::diagnose()
+```
+
+```{r}
+datos |> dplyr::select(area)
+```
+
+```{r}
+datos <- datos |> dplyr::mutate(area = as.numeric(area))
+```
+```{r}
+datos |> dlookr::diagnose()
+```
+
+
+```{r}
+datos |> dlookr::diagnose_numeric()
+```
+
+```{r}
+datos |> dlookr::diagnose_category()
+```
+
+```{r}
+datos |> dlookr::describe()
+```
+
+```{r}
+datos |> dplyr::group_by(country) |> dlookr::describe(area)
+```
+
+
+
+```{r}
+datos <- nasaweather::atmos
+
+datos |> head()
+```
+
+```{r}
+datos |> ggplot() +
+  geom_point(aes(x = long, y = lat))
+```
+
+```{r}
+subdatos <- datos |> dplyr::select(surftemp:cloudhigh)
+head(subdatos)
+```
+
+
+```{r}
+subdatos |> diagnose_numeric()
+```
+
+```{r}
+subdatos |> describe()
+```
+
+```{r}
+subdatos |> dlookr::plot_na_pareto(col = "blue")
+```
+
+```{r}
+subdatos |> dlookr::plot_normality()
+```
+
+```{r}
+subdatos |> dlookr::diagnose_outlier()
+```
+
+```{r}
+subdatos |> dlookr::plot_outlier()
+```
+
+```{r}
+subdatos |> dlookr::correlate() |> plot()
+```
+
