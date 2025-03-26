@@ -73,7 +73,7 @@ git clone https://github.com/usuario/diplo-modulo3-equipo-n.git
 
 ## Segunda parte
 
-+ Deberá realizar un **EDA detallado** que incluya tablas y gráficas que **al menos** respondan las siguientes preguntas:
+Deberá realizar un **EDA detallado** que incluya tablas y gráficas que **al menos** respondan las siguientes preguntas:
 
 + ¿Cuál es la duración promedio de la carrera de un jugador de béisbol profesional según su posición?
 
