@@ -73,4 +73,44 @@ git clone https://github.com/usuario/diplo-modulo3-equipo-n.git
 
 ## Segunda parte
 
-En construcción...
++ Deberá realizar un **EDA detallado** que incluya tablas y gráficas que **al menos** respondan las siguientes preguntas:
+
++ ¿Cuál es la duración promedio de la carrera de un jugador de béisbol profesional según su posición?
+
++ ¿Cómo se comparan los promedios de bateo entre jugadores que asistieron a la universidad y los que no?
+
++ ¿Los jugadores con carreras más largas tienden a tener salarios más altos?
+
++ ¿Existe una diferencia significativa en el rendimiento entre jugadores de diferentes conferencias universitarias?
+
++ ¿Cómo se relaciona la altura y el peso del jugador con su rendimiento en bateo?
+
++ ¿Existe alguna tendencia de los salarios en la MLB en los últimos 50 años?
+
++ ¿Existen disparidades salariales entre jugadores con diferentes antecedentes educativos?
+
++ ¿La asistencia a la universidad influye en el salario del primer año de un jugador?
+
++ ¿Hay alguna relación entre las estadísticas de rendimiento (promedio de bateo, home runs) y el salario?
+
++ ¿Los lanzadores ganan salarios significativamente diferentes a los bateadores?
+
++ ¿Qué factores contribuyen a la inducción al Salón de la Fama?
+
++ ¿Existe una diferencia significativa en las tasas de entrada al Salón de la Fama entre lanzadores y bateadores?
+
++ ¿El número de home runs aumenta las probabilidades de ingresar al Salón de la Fama?
+
++ ¿Los jugadores de ciertas décadas tienen más probabilidades de ser incluidos al Salón de la Fama?
+
++ ¿Qué se puede decir del tiempo en el que un jugador empieza su carrera hasta que se vuelve miembro del Salón de la Fama?
+
++ ¿Cómo se relaciona el rendimiento en su primera temporada con la duración de su carrera?
+
++ ¿Las estadísticas de fielding se relacionan con la duración total de la carrera?
+
++ ¿Cuál es la probabilidad de que un jugador llegue a las Grandes Ligas según sus estadísticas universitarias?
+
++ ¿Existen grupos de jugadores con trayectorias profesionales similares según métricas de rendimiento?
+
++ ¿Cómo afecta el rendimiento de un jugador en sus mejores años a sus ganancias totales en la carrera?
