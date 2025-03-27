@@ -1,6 +1,5 @@
 ---
 title: "Sesión 05"
-author: "Eduardo Martínez"
 date: "2025-03-27"
 output: html_document
 ---
