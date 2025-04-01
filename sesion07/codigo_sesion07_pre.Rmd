@@ -1,0 +1,205 @@
+---
+title: "Sesión 7"
+author: "Eduardo Martínez"
+date: "2025-04-01"
+output: html_document
+---
+
+```{r}
+library(funModeling)
+library(SmartEDA)
+library(Hmisc)
+library(dplyr)
+library(magrittr)
+library(ggplot2)
+library(ggplot2movies)
+library(palmerpenguins)
+```
+
+```{r}
+datos <- palmerpenguins::penguins
+```
+
+```{r}
+funModeling::status(datos)
+```
+
+```{r}
+datos |> data_integrity()
+```
+```{r}
+datos |> data_integrity() |> summary()
+```
+```{r}
+datos |> plot_num()
+```
+
+```{r}
+datos |> profiling_num()
+```
+
+```{r}
+datos |> freq()
+```
+
+
+```{r}
+datos |> correlation_table("body_mass_g")
+```
+
+Genera un dataframe que tiene varias métricas relacionadas con la teoría de la información. Las métricas son: entropía (en), información mutua (mi), ganancia de información (ig) y razón de ganancia (gr).
+
+```{r}
+datos |> var_rank_info("body_mass_g")
+```
+
+```{r}
+datos |> var_rank_info("body_mass_g") |>
+  ggplot(aes(x = reorder(var, gr), y = gr, fill = var)) +
+  geom_bar(stat = "identity") + 
+  coord_flip() + 
+  theme_bw() + 
+  xlab("") + 
+  ylab("Importancia de variables (basada en Information Gain)") +
+  guides(fill = FALSE)
+```
+
+
+```{r}
+cross_plot(data = datos, input = c("island", "species"), target = "sex")
+```
+
+```{r}
+cross_plot(data = datos, input = "body_mass_g", target = "sex")
+```
+
+```{r}
+cross_plot(data = datos, input = "flipper_length_mm", target = "sex")
+```
+
+```{r}
+cross_plot(data = datos, input = "bill_length_mm", target = "sex")
+```
+
+```{r}
+plotar(data = datos, input = "bill_length_mm", target = "sex", plot_type = "boxplot")
+```
+
+```{r}
+SmartEDA::ExpNumViz(datos, target= "species")
+```
+```{r}
+SmartEDA::ExpNumViz(datos, target= "body_mass_g")
+```
+
+
+```{r}
+SmartEDA::ExpCatViz(datos, target= "species")
+```
+
+```{r}
+plotar(data = datos, input = "bill_length_mm", target = "sex", plot_type = "histdens")
+```
+
+```{r}
+categ_analysis(data = datos, input = "species", target = "sex")
+```
+
+```{r}
+ptos_corte <- discretize_get_bins(data = datos, input = "bill_length_mm", n_bins=5)
+```
+
+```{r}
+discretize_df(data = datos, data_bins = ptos_corte, stringsAsFactors=T)
+```
+
+```{r}
+discretizacion <- equal_freq(datos$bill_depth_mm, n_bins = 5)
+discretizacion
+```
+
+
+```{r}
+Hmisc::describe(discretizacion)
+```
+```{r}
+variable_escalada <- range01(datos$bill_length_mm)
+
+summary(variable_escalada)
+```
+
+```{r}
+datos %$% range01(bill_length_mm) |> summary()
+```
+
+
+```{r}
+SmartEDA::ExpParcoord(datos, Group = "species")
+```
+
+```{r}
+SmartEDA::ExpParcoord(datos |> dplyr::select(where(is.numeric), species),
+                      Group = "species") +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1))
+```
+
+
+```{r}
+SmartEDA::ExpParcoord(datos,
+                      Group = "species",
+                      Nvar=c("bill_length_mm","bill_depth_mm",
+                             "flipper_length_mm","body_mass_g"))
+```
+
+```{r}
+SmartEDA::ExpParcoord(datos,
+                      Group = "sex",
+                      Nvar=c("bill_length_mm","bill_depth_mm",
+                             "flipper_length_mm","body_mass_g"))
+```
+
+```{r}
+SmartEDA::ExpParcoord(datos,
+                      Group = "island",
+                      Nvar=c("bill_length_mm","bill_depth_mm",
+                             "flipper_length_mm","body_mass_g"))
+```
+
+```{r}
+tukey_outlier(datos$bill_length_mm)
+
+summary(datos$bill_length_mm)
+```
+
+```{r}
+hampel_outlier(datos$bill_length_mm)
+
+summary(datos$bill_length_mm)
+```
+
+```{r}
+otros_datos <- ggplot2movies::movies
+head(otros_datos)
+```
+
+```{r}
+tukey_outlier(otros_datos$length)
+
+summary(otros_datos$length)
+```
+
+```{r}
+otros_datos_sin_outliers <- prep_outliers(data = otros_datos,
+                                          input = c('length'),
+                                          method = "tukey", type='set_na')
+
+otros_datos_sin_outliers |> head()
+```
+
+```{r}
+otros_datos |> summary()
+```
+
+```{r}
+otros_datos_sin_outliers |> summary()
+```
