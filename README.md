@@ -14,3 +14,4 @@
 - [Sesion 4: 25 de marzo de 2025](./sesion04)
 - [Sesion 5: 27 de marzo de 2025](./sesion05)
 - [Sesion 6: 27 de marzo de 2025](./sesion06)
+- [Sesion 7: 1 de abril de 2025](./sesion07)
